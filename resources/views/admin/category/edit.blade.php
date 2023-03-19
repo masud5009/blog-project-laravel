@@ -48,7 +48,7 @@
                             </div>
                             <!-- /.card-body -->
 
-                            <div class="card-footer">
+                            <div class="card-footer" style="background:transparent">
                               <button type="submit" class="btn btn-primary">Update Category</button>
                             </div>
                           </form>

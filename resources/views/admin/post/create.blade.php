@@ -29,65 +29,69 @@
                                 <a href="{{ route('post.index') }}" class="btn btn-primary">Go Back to Post List</a>
                             </div>
                         </div>
-                        <div class="card-body p-0">
+                        <div class="card-body">
                             <div class="row">
-                                <div class="col-12 col-lg-6 col-md-8 offset-md-2 offset-lg-3">
+                                <div class="col-12 col-lg-12 col-md-8 offset-md-2 offset-lg-0">
                                     <!-- form start -->
                                     <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="title"> Post Title</label>
-                                                <input type="text" name="title" value="{{ old('title') }}"
-                                                    class="form-control" placeholder="Enter title">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="category">Select Category</label>
-                                                <select name="category" id="category" class="form-control">
-                                                    @foreach ($categories as $category)
-                                                        <option value="" selected style="display: none">Select
-                                                            Category</option>
-                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="image">Post Image</label>
-                                                <div class="custom-file">
-                                                    <input type="file" name="image" class="custom-file-input"
-                                                        id="image">
-                                                    <label class="custom-file-label" for="customFile">Choose file</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Choose Post Tags</label>
-                                                <div class="d-flex flex-wrap">
-                                                    @foreach ($tags as $tag)
-                                                        <div class="custom-control custom-checkbox"
-                                                            style="margin-right: 20px">
-                                                            <input  class="custom-control-input"
-                                                                    type="checkbox"
-                                                                    name="tags[]" id="tag{{ $tag->id }}"
-                                                                    value="{{ $tag->id }}">
-
-                                                            <label for="tag{{ $tag->id }}"
-                                                                   class="custom-control-label">{{ $tag->name }}</label>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="title"> Post Title</label>
+                                                        <input type="text" name="title" value="{{ old('title') }}"
+                                                            class="form-control" placeholder="Enter title">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="category">Select Category</label>
+                                                        <select name="category" id="category" class="form-control">
+                                                            @foreach ($categories as $category)
+                                                                <option value="" selected style="display: none">Select
+                                                                    Category</option>
+                                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="image">Post Image</label>
+                                                        <div class="custom-file">
+                                                            <input type="file" name="image" class="custom-file-input"
+                                                                id="image">
+                                                            <label class="custom-file-label" for="customFile">Choose file</label>
                                                         </div>
-                                                    @endforeach
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Choose Post Tags</label>
+                                                        <div class="d-flex flex-wrap">
+                                                            @foreach ($tags as $tag)
+                                                                <div class="custom-control custom-checkbox"
+                                                                    style="margin-right: 20px">
+                                                                    <input  class="custom-control-input"
+                                                                            type="checkbox"
+                                                                            name="tags[]" id="tag{{ $tag->id }}"
+                                                                            value="{{ $tag->id }}">
+
+                                                                    <label for="tag{{ $tag->id }}"
+                                                                           class="custom-control-label">{{ $tag->name }}</label>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Description</label>
+                                                        <textarea class="form-control" id="summernote" name="description" rows="6" placeholder="Enter description"
+                                                            style="height: 90px;">{{ old('description') }}</textarea>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Description</label>
-                                                <textarea class="form-control" id="summernote" name="description" rows="3" placeholder="Enter description"
-                                                    style="height: 73px;">{{ old('description') }}</textarea>
-                                            </div>
+
                                         </div>
                                         <!-- /.card-body -->
-
-                                        <div class="card-footer">
                                             <button type="submit" class="btn btn-primary">Create post</button>
-                                        </div>
                                     </form>
                                 </div>
                             </div>

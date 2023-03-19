@@ -177,7 +177,7 @@
                         <img src="" class="img-circle elevation-2" alt="">
                     </div>
                     <div class="info">
-                        <a href="" class="d-block"></a>
+                        <a href="" class="d-block">{{ Auth::user()->name }}</a>
                     </div>
                 </div>
 
@@ -211,7 +211,7 @@
                         <!--category-->
                         <li class="nav-item">
                             <a href="{{ route('category.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
+                                <i class="nav-icon fa-solid fa-tags"></i>
                                 <p>
                                     Category
                                 </p>
@@ -221,7 +221,7 @@
                         <!--tag-->
                         <li class="nav-item">
                             <a href="{{ route('tag.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
+                                <i class="nav-icon fa-solid fa-tag"></i>
                                 <p>
                                     Tag
                                 </p>
@@ -240,7 +240,7 @@
                         <!--/.post-->
                         <!--settings-->
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('setting') }}" class="nav-link">
                                 <i class="nav-icon fas fa-cog"></i>
                                 <p>
                                     Settings
@@ -311,7 +311,7 @@
         $('#summernote').summernote({
             placeholder: 'write your post description !',
             tabsize: 2,
-            height: 100
+            height: 200
         });
     </script>
     <script>
