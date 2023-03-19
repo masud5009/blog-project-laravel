@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Session;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-        return view('admin.category.index')->with(compact('category'));
+        $tags = Tag::all();
+        return view('admin.tag.index',compact('tags'));
     }
 
     /**
@@ -27,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        return view('admin.tag.create');
     }
 
     /**
@@ -40,25 +40,24 @@ class CategoryController extends Controller
     {
         //validation
         $this->validate($request,[
-            'name' => 'required|unique:categories,name',
+            'name' => 'required|unique:tags,name',
         ]);
-        $category = Category::create([
+        $tags = Tag::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name,'_'),
             'description' =>$request->description,
         ]);
-
-        Session::flash('success','Category created successfully');
+        session()->flash('success','Tag added successfully');
         return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Tag $tag)
     {
         //
     }
@@ -66,48 +65,48 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Tag $tag)
     {
-        return view('admin.category.edit',compact('category'));
+        return view('admin.tag.edit',compact('tag'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Tag $tag)
     {
-        $this->validate($request,[
-            'name' => "required|unique:categories,name,$category->name",
+         //validation
+         $this->validate($request,[
+            'name' => "required|unique:tags,name,$tag->name",
         ]);
+        $tag->name = $request->name;
+        $tag->slug = Str::slug($request->name,'_');
+        $tag->description = $request->description;
+        $tag->save();
 
-        $category->name = $request->name;
-        $category->slug = Str::slug($request->name,'_');
-        $category->description = $request->description;
-        $category->save();
-
-        Session::flash('success','Category updated successfully');
+        session()->flash('success','Tag update successfully');
         return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Tag $tag)
     {
-        if($category){
-            $category->delete();
+        if($tag){
+            $tag->delete();
         }
-        Session::flash('success','Category delted successfully');
+        session()->flash('success','Tag deleted successfully');
         return redirect()->back();
     }
 }

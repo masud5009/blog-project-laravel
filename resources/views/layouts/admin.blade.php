@@ -14,7 +14,8 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="{{ asset('public/admin') }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet"
+        href="{{ asset('public/admin') }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- ciChek -->
     <link rel="stylesheet" href="{{ asset('public/admin') }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
@@ -23,6 +24,9 @@
     <link rel="stylesheet" href="{{ asset('public/admin') }}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!--Toaster alert-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!--summernote cdn-->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -197,13 +201,43 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
-                            <a href="" class="nav-link active">
+                            <a href="{{ route('admin.index') }}" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
                                 </p>
                             </a>
                         </li>
+                        <!--category-->
+                        <li class="nav-item">
+                            <a href="{{ route('category.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Category
+                                </p>
+                            </a>
+                        </li>
+                        <!--/.category-->
+                        <!--tag-->
+                        <li class="nav-item">
+                            <a href="{{ route('tag.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Tag
+                                </p>
+                            </a>
+                        </li>
+                        <!--/.tag-->
+                        <!--post-->
+                        <li class="nav-item">
+                            <a href="{{ route('post.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Post
+                                </p>
+                            </a>
+                        </li>
+                        <!--/.post-->
                         <!--settings-->
                         <li class="nav-item">
                             <a href="" class="nav-link">
@@ -251,27 +285,35 @@
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <script src="{{ asset('admin')}}/plugins/jquery/jquery.min.js"></script>
+    <script src="{{ asset('admin') }}/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
-    <script src="{{ asset('admin')}}/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="{{ asset('admin') }}/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     {{-- <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script> --}}
     <!-- Bootstrap 4 -->
-    <script src="{{ asset('public/admin')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('public/admin') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Tempusdominus Bootstrap 4 -->
-    <script src="{{ asset('public/admin')}}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="{{ asset('public/admin') }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js">
+    </script>
     <!-- Summernote -->
-    <script src="{{ asset('public/admin')}}/plugins/summernote/summernote-bs4.min.js"></script>
+    {{-- <script src="{{ asset('public/admin')}}/plugins/summernote/summernote-bs4.min.js"></script> --}}
     <!-- overlayScrollbars -->
-    <script src="{{ asset('public/admin')}}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="{{ asset('public/admin') }}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset('public/admin')}}/js/adminlte.js"></script>
+    <script src="{{ asset('public/admin') }}/js/adminlte.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('admin')}}/js/demo.js"></script>
+    <script src="{{ asset('admin') }}/js/demo.js"></script>
     <!-- Toaster alert -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'write your post description !',
+            tabsize: 2,
+            height: 100
+        });
+    </script>
     <script>
         @if (Session::has('success'))
             toastr.success('{{ Session::get('success') }}');
