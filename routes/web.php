@@ -1,30 +1,45 @@
 <?php
-
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\SettingController;
-use App\Http\Controllers\TagController;
+use App\Http\Controllers\{
+    AdminController,PostController,SettingController,TagController,
+    CategoryController,FrontendController,HomeController,
+};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 //FRONTEND PAGE ROUTE
-Route::get('/',[FrontendController::class,'index']);
-
+Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('/post/{slug}',[FrontendController::class,'post'])->name('view.post');
+//USER AUTHENTICATION ROUTE
 Auth::routes();
 
-Route::get('/profile', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profile', [HomeController::class, 'index'])->name('home')->middleware('verified');
 
-
-Route::prefix('admin/')->middleware('isAdmin')->group(function(){
-    Route::get('/',[AdminController::class,'redirect_admin']);
-    Route::get('dashboard',[AdminController::class,'index'])->name('admin.index');
-    Route::get('/setting',[SettingController::class,'index'])->name('setting');
-    Route::resource('category',CategoryController::class);
-    Route::resource('tag',TagController::class);
-    Route::resource('post',PostController::class);
+//ADMIN PAGE ROUTE
+Route::prefix('admin/')->middleware('isAdmin')->group(function () {
+    Route::get('/', [AdminController::class, 'redirect_admin']);
+    Route::get('dashboard', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/setting', [SettingController::class, 'index'])->name('setting');
+    Route::resource('category', CategoryController::class);
+    Route::resource('tag', TagController::class);
+    Route::resource('post', PostController::class);
 });
 
 
+//EMAIL VERIFICATION
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/profile');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::get('/email/verify', function () {
+    return view('auth.verify');
+})->middleware('auth')->name('verification.notice');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.resend');

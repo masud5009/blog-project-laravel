@@ -22,4 +22,8 @@ class Post extends Model
     public function tag(){
         return $this->belongsToMany(Tag::class);
     }
+    public static function postCount($id)
+    {
+        return Post::where('category_id',$id)->count();
+    }
 }

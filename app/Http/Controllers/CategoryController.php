@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
+        $category = Category::orderBy('created_at','DESC')->get();
         return view('admin.category.index')->with(compact('category'));
     }
 
@@ -48,7 +48,7 @@ class CategoryController extends Controller
             'description' =>$request->description,
         ]);
 
-        Session::flash('success','Category created successfully');
+        session()->flash('success','Category created successfully');
         return redirect()->back();
     }
 
@@ -92,7 +92,7 @@ class CategoryController extends Controller
         $category->description = $request->description;
         $category->save();
 
-        Session::flash('success','Category updated successfully');
+        session()->flash('success','Category updated successfully');
         return redirect()->back();
     }
 
@@ -107,7 +107,7 @@ class CategoryController extends Controller
         if($category){
             $category->delete();
         }
-        Session::flash('success','Category delted successfully');
+        session()->flash('success','Category delted successfully');
         return redirect()->back();
     }
 }

@@ -47,11 +47,16 @@
                               $count = 1;
                           @endphp
                           @foreach ($category as $cat)
+                          @php
+                              $post_count = \App\Models\Post::postCount($cat->id)
+                          @endphp
                           <tr>
                             <td>{{ $count++ }}</td>
                             <td>{{ $cat->name }}</td>
                             <td>{{ $cat->slug }}</td>
-                            <td>{{ $cat->id }}</td>
+                            <td>
+                                {{ $post_count }}
+                            </td>
                             <td class="d-flex">
                               <a href="{{ route('category.edit',[$cat->id])}}" class="btn btn-primary mr-1 btn-sm"><i class="fas fa-edit"></i></a>
                               <form action="{{ route('category.destroy',[$cat->id])}}" method="post">

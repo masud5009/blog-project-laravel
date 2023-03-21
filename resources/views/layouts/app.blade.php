@@ -8,7 +8,7 @@
 
     <link href="../../css.css?family=Muli:300,400,700|Playfair+Display:400,700,900" rel="stylesheet">
 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="{{ asset('public/website') }}/fonts/icomoon/style.css">
     <link rel="stylesheet" href="{{ asset('public/website') }}/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('public/website') }}/css/magnific-popup.css">
     <link rel="stylesheet" href="{{ asset('public/website') }}/css/jquery-ui.css">
@@ -45,22 +45,27 @@
                     </div>
 
                     <div class="col-4 site-logo">
-                        <a href="index.html" class="text-black h2 mb-0">Mini Blog</a>
+                        <a href="{{ route('index') }}" class="text-black h2 mb-0">Mini Blog</a>
                     </div>
 
                     <div class="col-8 text-right">
                         <nav class="site-navigation" role="navigation">
                             <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
                                 @foreach ($category as $cat)
-                                <li><a href="category.html">{{ $cat->name }}</a></li>
+                                    <li><a href="{{ $cat->slug }}">{{ $cat->name }}</a></li>
                                 @endforeach
-                                {{-- <li><a href="category.html">Politics</a></li>
-                                <li><a href="category.html">Tech</a></li>
-                                <li><a href="category.html">Entertainment</a></li>
-                                <li><a href="category.html">Travel</a></li>
-                                <li><a href="category.html">Sports</a></li> --}}
+                                @guest
+                                    @if (Route::has('register') && Route::has('login'))
+                                        <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register/Login') }}</a></li>
+                                    @endif
+                                @else
+                                    <li>
+                                        <i class="fas fa-user"></i><a class="nav-link" href="{{ route('register') }}">{{ Auth::user()->name }}</a>
+                                    </li>
+                                @endguest
                                 <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span
                                             class="icon-search"></span></a></li>
+
                             </ul>
                         </nav>
                         <a href="#"
@@ -120,9 +125,7 @@
                             Copyright &copy;
                             <script>
                                 document.write(new Date().getFullYear());
-                            </script> All rights reserved | This template is made with <i
-                                class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                target="_blank">Colorlib</a>
+                            </script> All rights reserved
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
                     </div>
