@@ -64,8 +64,8 @@
                         <!-- /.col -->
                     </div>
                 </form>
-                @if(Route::has('password.request'))
-                <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
+                @if (Route::has('password.request'))
+                    <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
                 @endif
                 <br>
                 <a href="{{ route('register') }}" class="text-center">Register a new membership</a>

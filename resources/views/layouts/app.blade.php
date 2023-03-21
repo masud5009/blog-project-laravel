@@ -52,15 +52,17 @@
                         <nav class="site-navigation" role="navigation">
                             <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
                                 @foreach ($category as $cat)
-                                    <li><a href="{{ $cat->slug }}">{{ $cat->name }}</a></li>
+                                    <li><a href="{{ route('view.category', $cat->slug) }}">{{ $cat->name }}</a></li>
                                 @endforeach
                                 @guest
                                     @if (Route::has('register') && Route::has('login'))
-                                        <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register/Login') }}</a></li>
+                                        <li><a class="nav-link"
+                                                href="{{ route('register') }}">{{ __('Register/Login') }}</a></li>
                                     @endif
                                 @else
                                     <li>
-                                        <i class="fas fa-user"></i><a class="nav-link" href="{{ route('register') }}">{{ Auth::user()->name }}</a>
+                                        <i class="fas fa-user"></i><a class="nav-link"
+                                            href="{{ route('register') }}">{{ Auth::user()->name }}</a>
                                     </li>
                                 @endguest
                                 <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span

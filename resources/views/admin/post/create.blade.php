@@ -49,7 +49,8 @@
                                                             @foreach ($categories as $category)
                                                                 <option value="" selected style="display: none">Select
                                                                     Category</option>
-                                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                                <option value="{{ $category->id }}">{{ $category->name }}
+                                                                </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -58,7 +59,8 @@
                                                         <div class="custom-file">
                                                             <input type="file" name="image" class="custom-file-input"
                                                                 id="image">
-                                                            <label class="custom-file-label" for="customFile">Choose file</label>
+                                                            <label class="custom-file-label" for="customFile">Choose
+                                                                file</label>
                                                         </div>
                                                     </div>
 
@@ -68,13 +70,12 @@
                                                             @foreach ($tags as $tag)
                                                                 <div class="custom-control custom-checkbox"
                                                                     style="margin-right: 20px">
-                                                                    <input  class="custom-control-input"
-                                                                            type="checkbox"
-                                                                            name="tags[]" id="tag{{ $tag->id }}"
-                                                                            value="{{ $tag->id }}">
+                                                                    <input class="custom-control-input" type="checkbox"
+                                                                        name="tags[]" id="tag{{ $tag->id }}"
+                                                                        value="{{ $tag->id }}">
 
                                                                     <label for="tag{{ $tag->id }}"
-                                                                           class="custom-control-label">{{ $tag->name }}</label>
+                                                                        class="custom-control-label">{{ $tag->name }}</label>
                                                                 </div>
                                                             @endforeach
                                                         </div>
@@ -91,7 +92,7 @@
 
                                         </div>
                                         <!-- /.card-body -->
-                                            <button type="submit" class="btn btn-primary">Create post</button>
+                                        <button type="submit" class="btn btn-primary">Create post</button>
                                     </form>
                                 </div>
                             </div>

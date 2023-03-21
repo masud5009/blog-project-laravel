@@ -13,8 +13,9 @@ use App\Models\Post;
                         <span class="post-category text-white bg-success mb-3">{{ $post->category->name }}</span>
                         <h1 class="mb-4"><a href="javascript:void()">{{ $post->title }}</a></h1>
                         <div class="post-meta align-items-center text-center">
-                            <figure class="author-figure mb-0 mr-3 d-inline-block"><img src="{{asset('public/storage/user/' . $post->user->image)}}"
-                                    alt="Image" class="img-fluid"></figure>
+                            <figure class="author-figure mb-0 mr-3 d-inline-block"><img
+                                    src="{{ asset('public/storage/user/' . $post->user->image) }}" alt="Image"
+                                    class="img-fluid"></figure>
                             <span class="d-inline-block mt-1">{{ $post->user->name }}</span>
                             <span>{{ $post->created_at->format('M d, Y') }}</span>
                         </div>
@@ -187,10 +188,11 @@ use App\Models\Post;
                     <!-- END sidebar-box -->
                     <div class="sidebar-box">
                         <div class="bio text-center">
-                            <img src="{{ asset('public/storage/user/'.$post->user->image) }}" alt="Image Placeholder" class="img-fluid mb-5">
+                            <img src="{{ asset('public/storage/user/' . $post->user->image) }}" alt="Image Placeholder"
+                                class="img-fluid mb-5">
                             <div class="bio-body">
                                 <h2>{{ $post->user->name }}</h2>
-                                <p class="mb-4">{{ $post->user->description}}</p>
+                                <p class="mb-4">{{ $post->user->description }}</p>
                                 <p><a href="#" class="btn btn-primary btn-sm rounded px-4 py-2">Read my bio</a></p>
                                 <p class="social">
                                     <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>

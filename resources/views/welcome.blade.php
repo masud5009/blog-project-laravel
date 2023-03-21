@@ -6,7 +6,7 @@
                 {{-- FIRST 2 POST HEARE --}}
                 <div class="col-md-4">
                     @foreach ($first_header as $post)
-                        <a href="{{ route('view.post',$post->slug) }}" class="h-entry mb-30 v-height gradient"
+                        <a href="{{ route('view.post', $post->slug) }}" class="h-entry mb-30 v-height gradient"
                             style="background-image: url('{{ asset('public/storage/post/' . $post->image) }}');">
 
                             <div class="text">
@@ -19,7 +19,7 @@
                 {{-- SECOND 1 POST HEARE --}}
                 <div class="col-md-4">
                     @foreach ($second_header as $post)
-                        <a href="{{ route('view.post',$post->slug) }}" class="h-entry img-5 h-100 gradient"
+                        <a href="{{ route('view.post', $post->slug) }}" class="h-entry img-5 h-100 gradient"
                             style="background-image: url('{{ asset('public/storage/post/' . $post->image) }}');">
 
                             <div class="text">
@@ -35,7 +35,7 @@
                 {{-- LAST 2 POST HEARE --}}
                 <div class="col-md-4">
                     @foreach ($last_header as $post)
-                        <a href="{{ route('view.post',$post->slug) }}" class="h-entry mb-30 v-height gradient"
+                        <a href="{{ route('view.post', $post->slug) }}" class="h-entry mb-30 v-height gradient"
                             style="background-image: url('{{ asset('public/storage/post/' . $post->image) }}');">
 
                             <div class="text">
@@ -60,21 +60,24 @@
                 @foreach ($recentPosts as $post)
                     <div class="col-lg-4 mb-4">
                         <div class="entry2">
-                            <a href="{{ route('view.post',$post->slug) }}"><img src="{{ asset('public/storage/post/' . $post->image) }}"
-                                    alt="Image" class="img-fluid rounded"></a>
+                            <a href="{{ route('view.post', $post->slug) }}"><img
+                                    src="{{ asset('public/storage/post/' . $post->image) }}" alt="Image"
+                                    class="img-fluid rounded"></a>
                             <div class="excerpt">
                                 <span class="post-category text-white bg-danger mb-3">{{ $post->category->name }}</span>
 
-                                <h2><a href="{{ route('view.post',$post->slug) }}">{{ $post->title }}</a></h2>
+                                <h2><a href="{{ route('view.post', $post->slug) }}">{{ $post->title }}</a></h2>
                                 <div class="post-meta align-items-center text-left clearfix">
-                                    <figure class="author-figure mb-0 mr-3 float-left"><img src="{{ asset('public/storage/user/'.$post->user->image) }}"
-                                            alt="Image" class="img-fluid"></figure>
-                                    <span class="d-inline-block mt-1">By <a href="#">{{ $post->user->name }}</a></span>
+                                    <figure class="author-figure mb-0 mr-3 float-left"><img
+                                            src="{{ asset('public/storage/user/' . $post->user->image) }}" alt="Image"
+                                            class="img-fluid"></figure>
+                                    <span class="d-inline-block mt-1">By <a
+                                            href="#">{{ $post->user->name }}</a></span>
                                     <span>{{ $post->created_at->format('M d, Y') }}</span>
                                 </div>
 
                                 <p>{!! Str::limit($post->description, 300) !!}</p>
-                                <p><a href="{{ route('view.post',$post->slug) }}">Read More</a></p>
+                                <p><a href="{{ route('view.post', $post->slug) }}">Read More</a></p>
                             </div>
                         </div>
                     </div>
@@ -82,7 +85,7 @@
             </div>
             <div class="row text-center pt-5 border-top">
                 <div class="col-md-12">
-                        {{ $recentPosts->links() }}
+                    {{ $recentPosts->links() }}
                 </div>
             </div>
         </div>
@@ -94,7 +97,7 @@
             <div class="row align-items-stretch retro-layout">
                 @foreach ($first_footer as $post)
                     <div class="col-md-5 order-md-2">
-                        <a href="{{ route('view.post',$post->slug) }}" class="hentry img-1 h-100 gradient"
+                        <a href="{{ route('view.post', $post->slug) }}" class="hentry img-1 h-100 gradient"
                             style="background-image: url('{{ asset('public/storage/post/' . $post->image) }}');">
                             <span class="post-category text-white bg-danger">{{ $post->category->name }}</span>
                             <div class="text">
@@ -106,7 +109,7 @@
                 @endforeach
                 <div class="col-md-7">
                     @foreach ($last_footer as $post)
-                        <a href="{{ route('view.post',$post->slug) }}" class="hentry img-2 v-height mb30 gradient"
+                        <a href="{{ route('view.post', $post->slug) }}" class="hentry img-2 v-height mb30 gradient"
                             style="background-image: url('{{ asset('public/storage/post/' . $post->image) }}');">
                             <span class="post-category text-white bg-success">{{ $post->category->name }}</span>
                             <div class="text text-sm">
@@ -118,7 +121,7 @@
 
                     <div class="two-col d-block d-md-flex justify-content-between">
                         @foreach ($second_footer as $post)
-                            <a href="{{ route('view.post',$post->slug) }}" class="hentry v-height img-2 gradient"
+                            <a href="{{ route('view.post', $post->slug) }}" class="hentry v-height img-2 gradient"
                                 style="background-image: url('{{ asset('public/storage/post/' . $post->image) }}');">
                                 <span class="post-category text-white bg-primary">{{ $post->category->name }}</span>
                                 <div class="text text-sm">

@@ -29,26 +29,38 @@ class FrontendController extends Controller
         $user = auth()->User();
 
         $category = Category::all();
-        $data = compact('category', 'header_posts', 'first_header', 'second_header','last_header','recentPosts', 'footer_post', 'first_footer', 'second_footer', 'last_footer');
+        $data = compact('category', 'header_posts', 'first_header', 'second_header', 'last_header', 'recentPosts', 'footer_post', 'first_footer', 'second_footer', 'last_footer');
         return view('welcome')->with($data);
     }
     public function post($slug)
     {
-        $post = Post::all()->where('slug',$slug)->first();
+        $post = Post::all()->where('slug', $slug)->first();
         $popular_post = Post::inRandomOrder()->limit(3)->get();
         //RELATED POST
-        $relatedPost = Post::orderBy('category_id','DESC')->inRandomOrder()->take(4)->get();
-        $firstPost = $relatedPost->splice(0,1);
-        $secondPost = $relatedPost->splice(0,1);
-        $lastPost = $relatedPost->splice(0,2);
+        $relatedPost = Post::orderBy('category_id', 'DESC')->inRandomOrder()->take(4)->get();
+        $firstPost = $relatedPost->splice(0, 1);
+        $secondPost = $relatedPost->splice(0, 1);
+        $lastPost = $relatedPost->splice(0, 2);
 
         $user = auth()->User();
         $category = Category::all();
         $tags = Tag::all();
-        if($post){
-            return view('post',compact('user','post','popular_post','category','tags','relatedPost','firstPost','secondPost','lastPost'));
-        }else{
+        if ($post) {
+            return view('post', compact('user', 'post', 'popular_post', 'category', 'tags', 'relatedPost', 'firstPost', 'secondPost', 'lastPost'));
+        } else {
             return redirect('/');
+        }
+    }
+
+    public function category($slug)
+    {
+        $categroy = Category::where('slug', $slug)->first();
+        if ($categroy) {
+            $posts = Post::where('category_id', $categroy->id)->paginate(9);
+            $data = compact('categroy', 'posts');
+            return view('category')->with($data);
+        } else {
+            return redirect()->route('index');
         }
     }
 }
