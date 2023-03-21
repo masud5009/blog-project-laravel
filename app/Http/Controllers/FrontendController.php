@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
@@ -40,7 +42,7 @@ class FrontendController extends Controller
         $secondPost = $relatedPost->splice(0,1);
         $lastPost = $relatedPost->splice(0,2);
 
-        $user =auth()->user();
+        $user = auth()->User();
         $category = Category::all();
         $tags = Tag::all();
         if($post){

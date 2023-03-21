@@ -67,9 +67,9 @@
 
                                 <h2><a href="{{ route('view.post',$post->slug) }}">{{ $post->title }}</a></h2>
                                 <div class="post-meta align-items-center text-left clearfix">
-                                    <figure class="author-figure mb-0 mr-3 float-left"><img src="images/person_1.jpg"
+                                    <figure class="author-figure mb-0 mr-3 float-left"><img src="{{ asset('public/storage/user/'.$post->user->image) }}"
                                             alt="Image" class="img-fluid"></figure>
-                                    <span class="d-inline-block mt-1">By <a href="#"></a></span>
+                                    <span class="d-inline-block mt-1">By <a href="#">{{ $post->user->name }}</a></span>
                                     <span>{{ $post->created_at->format('M d, Y') }}</span>
                                 </div>
 

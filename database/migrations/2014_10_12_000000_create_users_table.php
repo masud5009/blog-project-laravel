@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->boolean('role')->default(0);
             $table->string('name');
+            $table->string('image')->nullable();
+            $table->text('description')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
