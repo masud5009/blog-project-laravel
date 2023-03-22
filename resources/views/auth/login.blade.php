@@ -1,7 +1,9 @@
 @extends('layouts.account')
 @section('content')
     <div class="register-box">
-        <div class="register-logo"></div>
+        <div class="register-logo">
+            <a href="{{ route('index') }}" class="text-black h2 mb-0">M <span class="text-danger">-Educate</span></a>
+        </div>
 
         <div class="card">
             <div class="card-body register-card-body">

@@ -1,7 +1,9 @@
 @extends('layouts.account')
 
 @section('content')
-    <div class="login-logo"></div>
+    <div class="login-logo">
+        <a href="{{ route('index') }}" class="text-black h2 mb-0">M <span class="text-danger">-Educate</span></a>
+    </div>
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">

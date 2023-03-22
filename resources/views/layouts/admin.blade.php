@@ -164,9 +164,9 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="" class="brand-link">
-                <img src="img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                <img src="" alt="" class="brand-image img-circle elevation-3"
                     style="opacity: .8">
-                <span class="brand-text font-weight-light">Admin</span>
+                <span class="brand-text font-weight-light">Admin Panel</span>
             </a>
 
             <!-- Sidebar -->
@@ -262,6 +262,14 @@
                             </form>
                         </li>
                         <!--/.logout-->
+                        <li class="nav-item mt-5" style="border-radius:10rem">
+                            <a href="{{ route('index') }}" class="nav-link btn btn-primary" target="__blank">
+                                <i class="nav-icon fas fa-eye"></i>
+                                <p>
+                                    Website
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
