@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PostCreated;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use File;
+use Illuminate\Support\Facades\File;
+
 
 class PostController extends Controller
 {
@@ -19,7 +21,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at','DESC')->get();
+        $posts = Post::orderBy('created_at', 'DESC')->get();
         return view('admin.post.index', compact('posts'));
     }
 
@@ -58,7 +60,16 @@ class PostController extends Controller
             'user_id' => auth()->user()->id,
             'published_at' => Carbon::now(),
         ]);
+        // $post = new Post();
+        // $post->title = $request->title;
+        // $post->slug = Str::slug($request->title, '_');
+        // $post->description = $request->description;
+        // $post->category_id = $request->category;
+        // $post->user_id = auth()->user()->id;
+        // $post->published_at = Carbon::now();
+
         $post->tag()->attach($request->tags);
+
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filname = time() . '.' . $file->getClientOriginalExtension();
@@ -67,6 +78,8 @@ class PostController extends Controller
         }
         $post->save();
         session()->flash('success', 'Post created successfully');
+        //_Event calling Postmail__//
+        event(new PostCreated($post));
         return redirect()->back();
     }
 
@@ -115,7 +128,7 @@ class PostController extends Controller
 
         $post->tag()->sync($request->tags);
         //image exists
-        $image_path = public_path('storage/post/'.$post->image);
+        $image_path = public_path('storage/post/' . $post->image);
         if (File::exists($image_path)) {
             File::delete($image_path);
         }

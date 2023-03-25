@@ -240,6 +240,17 @@
                             </a>
                         </li>
                         <!--/.post-->
+                         <!--users-->
+                         <li class="nav-item">
+                            <a href="{{ route('users') }}" class="nav-link">
+                     
+                                <i class=" nav-icon fa-solid fa-user"></i>
+                                <p>
+                                    Users
+                                </p>
+                            </a>
+                        </li>
+                        <!--/.users-->
                         <!--settings-->
                         <li class="nav-item">
                             <a href="{{ route('setting') }}" class="nav-link">

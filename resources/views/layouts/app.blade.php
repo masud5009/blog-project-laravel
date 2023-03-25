@@ -45,7 +45,8 @@
                     </div>
 
                     <div class="col-4 site-logo">
-                        <a href="{{ route('index') }}" class="text-black h2 mb-0">M <span class="text-danger">-Educate</span></a>
+                        <a href="{{ route('index') }}" class="text-black h2 mb-0">M <span
+                                class="text-danger">-Educate</span></a>
                     </div>
 
                     <div class="col-8 text-right">
@@ -82,61 +83,32 @@
         @yield('content')
 
         <!--start:Footer-->
-        <div class="site-footer">
-            <div class="container">
-                <div class="d-flex">
-                    <div class="col-md-4">
-                        <h3 class="footer-heading mb-4">About Us</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi eaque minus aspernatur
-                            accusamus ipsum dolorem! Illum odit, qui quos eaque rem tempora quia, amet a quo saepe sint
-                            sed sunt?</p>
-                    </div>
-                    <div class="col-md-3 ml-auto">
-                        <!-- <h3 class="footer-heading mb-4">Navigation</h3> -->
-                        <ul class="list-unstyled float-left mr-5">
-                            <li><a href="">About Us</a></li>
-                            <li><a href="#">Advertise</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Subscribes</a></li>
-                        </ul>
-                        <ul class="list-unstyled float-left">
-                            @foreach ($category as $cat)
-                                <li><a
-                                        href="{{ route('view.category', ['slug' => $cat->slug]) }}">{{ $cat->name }}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-
-
-                        <div>
-                            <h3 class="footer-heading mb-4">Connect With Us</h3>
-                            <p>
-                                <a href=""><span class="icon-facebook pt-2 pr-2 pb-2 pl-0"></span></a>
-                                <a href=""><span class="icon-twitter p-2"></span></a>
-                                <a href=""><span class="icon-instagram p-2"></span></a>
-                                <a href=""><span class="icon-rss p-2"></span></a>
-                                <a href=""><span class="icon-envelope p-2"></span></a>
-                            </p>
+        <footer>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1>About us</h1>
+                        <div class="text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat reprehenderit magnam
+                            deleniti
+                            quasi saepe, consequatur atque sequi delectus dolore veritatis obcaecati quae, repellat
+                            eveniet
+                            omnis, voluptatem in. Soluta, eligendi, architecto
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 text-center">
+                    <div class="col-md-6">
+                        <h3 class="footer-heading mb-4">Connect With Us</h3>
                         <p>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            &copy;
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>| This template is made with <i class="icon-heart text-danger"
-                                aria-hidden="true"></i> by <a href="" target="_blank">Masud Rana</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            <a href="#"><span class="icon-facebook pt-2 pr-2 pb-2 pl-0"></span></a>
+                            <a href="#"><span class="icon-twitter p-2"></span></a>
+                            <a href="#"><span class="icon-instagram p-2"></span></a>
+                            <a href="#"><span class="icon-rss p-2"></span></a>
+                            <a href="#"><span class="icon-envelope p-2"></span></a>
                         </p>
                     </div>
                 </div>
             </div>
-        </div>
+        </footer>
         <!--end:Footer-->
 
     </div>
