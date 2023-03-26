@@ -165,7 +165,11 @@ h5,
 footer{
     margin-top: auto;
     background: #000;
+    padding: 1rem;
 }
+/* footer ul {
+    list-style: none;
+} */
 
 .bg-text-line {
     display: inline;
@@ -831,6 +835,12 @@ footer{
         height: 400px !important;
         position: relative;
         margin-bottom: 30px;
+    }
+    .footer-mobail{
+        flex-direction: column;
+    }
+    .footer-mobail .col-lg-4{
+        margin-bottom: 1rem;
     }
 }
 

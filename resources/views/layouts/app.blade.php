@@ -84,10 +84,10 @@
 
         <!--start:Footer-->
         <footer>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h1>About us</h1>
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center footer-mobail">
+                    <div class="col-lg-4">
+                        <h1 class="text-white">About us</h1>
                         <div class="text">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat reprehenderit magnam
                             deleniti
@@ -96,8 +96,15 @@
                             omnis, voluptatem in. Soluta, eligendi, architecto
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <h3 class="footer-heading mb-4">Connect With Us</h3>
+                    <div class="col-lg-4">
+                        <ul class="navbar-nav d-flex">
+                            @foreach ($category as $cat)
+                            <li class="nav-item"><a class="nav-link" href="{{ route('view.category', $cat->slug) }}">{{ $cat->name }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h3 class="footer-heading mb-4 text-white">Connect With Us</h3>
                         <p>
                             <a href="#"><span class="icon-facebook pt-2 pr-2 pb-2 pl-0"></span></a>
                             <a href="#"><span class="icon-twitter p-2"></span></a>
