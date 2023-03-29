@@ -164,8 +164,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="" class="brand-link">
-                <img src="" alt="" class="brand-image img-circle elevation-3"
-                    style="opacity: .8">
+                <img src="" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Admin Panel</span>
             </a>
 
@@ -240,10 +239,10 @@
                             </a>
                         </li>
                         <!--/.post-->
-                         <!--users-->
-                         <li class="nav-item">
+                        <!--users-->
+                        <li class="nav-item">
                             <a href="{{ route('users') }}" class="nav-link">
-                     
+
                                 <i class=" nav-icon fa-solid fa-user"></i>
                                 <p>
                                     Users
@@ -253,7 +252,7 @@
                         <!--/.users-->
                         <!--settings-->
                         <li class="nav-item">
-                            <a href="{{ route('setting') }}" class="nav-link">
+                            <a href="{{ route('setting.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-cog"></i>
                                 <p>
                                     Settings

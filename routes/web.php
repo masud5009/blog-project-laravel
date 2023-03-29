@@ -23,8 +23,8 @@ Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/post/{slug}', [FrontendController::class, 'post'])->name('view.post');
 Route::get('/category/{slug}', [FrontendController::class, 'category'])->name('view.category');
 //comment & reply route here
-Route::post('/comments',[CommentController::class,'store'])->name('comment.store')->middleware('auth');
-Route::post('/reply',[ReplyController::class,'store'])->name('reply.store')->middleware('auth');
+Route::post('/comments', [CommentController::class, 'store'])->name('comment.store')->middleware('auth');
+Route::post('/reply', [ReplyController::class, 'store'])->name('reply.store')->middleware('auth');
 
 //USER AUTHENTICATION ROUTE
 Auth::routes();
@@ -37,9 +37,8 @@ Route::prefix('admin/')->middleware('isAdmin')->group(function () {
     Route::get('dashboard', [AdminController::class, 'index'])->name('admin.index');
     Route::get('users', [AdminController::class, 'users'])->name('users');
     Route::get('profile/{user}', [AdminController::class, 'profile'])->name('admin.profile');
-    Route::post('profile/update/{user}', [AdminController::class, 'update'])->name('admin.update');;
-    Route::get('setting', [SettingController::class, 'index'])->name('setting');
-    Route::get('setting/update', [SettingController::class, 'update'])->name('setting.update');
+    Route::get('setting',[SettingController::class,'index'])->name('setting.index');
+    Route::post('setting',[SettingController::class,'update'])->name('setting.update');
     Route::resource('category', CategoryController::class);
     Route::resource('tag', TagController::class);
     Route::resource('post', PostController::class);

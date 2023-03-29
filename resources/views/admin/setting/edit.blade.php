@@ -31,7 +31,8 @@
                             <div class="row">
                                 <div class="col-12 col-lg-7 col-md-8 offset-md-2 offset-lg-2">
                                     <!-- form start -->
-                                    <form action="" method="post" enctype="multipart/form-data">
+                                    <form action="{{route('setting.update')}}" method="post"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         <div class="card-body">
                                             <div class="form-group">
@@ -123,8 +124,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>About</label>
-                                                    <textarea class="form-control" name="about" rows="3" placeholder="Enter description"
-                                                        style="height: 73px;"></textarea>
+                                                    <textarea class="form-control" name="about" rows="3" placeholder="Enter description" style="height: 73px;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
