@@ -45,9 +45,8 @@ use App\Models\Post;
 
 
                     <div class="pt-5">
+                        <h3 class="mb-5">Comments</h3>
                         @forelse ($post->comments as $comment)
-                        <h3 class="mb-5">{{ $comment->count() + @foreach ($comment->reply as $rep) {{ $rep->count() }} @endforeach }}
-                             Comments</h3>
                             <ul class="comment-list">
                                 <li class="comment">
                                     <div class="vcard">
@@ -76,7 +75,7 @@ use App\Models\Post;
                                                 <div class="meta">{{ $rep->created_at->diffForHumans() }}</div>
                                                 <p>{{ $rep->reply }}</p>
                                                 <p><a href="javascript::void(0)" class="reply rounded" onclick="reply(this)"
-                                                    data-commentid="{{ $rep->id }}">Reply</a></p>
+                                                    data-commentid="{{ $comment->id }}">Reply</a></p>
                                             </div>
                                         @endforeach
                                         <!--/.reply body area-->
@@ -95,8 +94,8 @@ use App\Models\Post;
                                 <input type="text" id="commentId" name="commentId" hidden>
                                 <textarea name="reply_body" id="reply" cols="50" rows="3"></textarea>
                                 <br>
-                                <input type="submit" class="btn btn-primary" value="Reply">
-                                <a href="#reply-area" class="btn btn-danger" onclick="reply_close(this)">close</a>
+                                <input type="submit" class="btn btn-primary rounded" value="Reply">
+                                <a href="#reply-area" class="btn btn-danger rounded" onclick="reply_close(this)">close</a>
                             </form>
                         </div>
                         <!--/.reply-area-->

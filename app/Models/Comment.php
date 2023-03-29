@@ -14,7 +14,7 @@ class Comment extends Model
             'user_id',
             'comment_body'
     ];
-    
+
     public function user()
     {
         return $this->belongsTo(User::class,'user_id','id');
