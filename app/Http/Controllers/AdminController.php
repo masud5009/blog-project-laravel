@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
-use File;
 
 class AdminController extends Controller
 {

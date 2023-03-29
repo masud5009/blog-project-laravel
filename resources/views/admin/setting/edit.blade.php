@@ -105,13 +105,6 @@
                                                             placeholder="Your conact number" value="">
                                                     </div>
                                                 </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label for="email">Contact Email</label>
-                                                        <input type="email" name="contact_email" class="form-control"
-                                                            placeholder="Your contact email" value="">
-                                                    </div>
-                                                </div>
 
                                                 <div class="col-6">
                                                     <div class="form-group">
@@ -129,8 +122,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Description</label>
-                                                    <textarea class="form-control" name="description" rows="3" placeholder="Enter description"
+                                                    <label>About</label>
+                                                    <textarea class="form-control" name="about" rows="3" placeholder="Enter description"
                                                         style="height: 73px;"></textarea>
                                                 </div>
                                             </div>

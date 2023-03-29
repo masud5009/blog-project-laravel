@@ -39,6 +39,7 @@ Route::prefix('admin/')->middleware('isAdmin')->group(function () {
     Route::get('profile/{user}', [AdminController::class, 'profile'])->name('admin.profile');
     Route::post('profile/update/{user}', [AdminController::class, 'update'])->name('admin.update');;
     Route::get('setting', [SettingController::class, 'index'])->name('setting');
+    Route::get('setting/update', [SettingController::class, 'update'])->name('setting.update');
     Route::resource('category', CategoryController::class);
     Route::resource('tag', TagController::class);
     Route::resource('post', PostController::class);

@@ -10,4 +10,8 @@ class SettingController extends Controller
     {
         return view('admin.setting.edit');
     }
+    public function update()
+    {
+
+    }
 }
