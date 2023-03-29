@@ -2,8 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Tag;
+use App\Models\User;
+use App\Models\Reply;
+use App\Models\Comment;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
@@ -25,5 +30,9 @@ class Post extends Model
     public static function postCount($id)
     {
         return Post::where('category_id',$id)->count();
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class,'post_id','id');
     }
 }

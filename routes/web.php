@@ -6,8 +6,10 @@ use App\Http\Controllers\{
     SettingController,
     TagController,
     CategoryController,
+    CommentController,
     FrontendController,
     HomeController,
+    ReplyController,
 };
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +22,9 @@ use Illuminate\Http\Request;
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/post/{slug}', [FrontendController::class, 'post'])->name('view.post');
 Route::get('/category/{slug}', [FrontendController::class, 'category'])->name('view.category');
+//comment & reply route here
+Route::post('/comments',[CommentController::class,'store'])->name('comment.store')->middleware('auth');
+Route::post('/reply',[ReplyController::class,'store'])->name('reply.store')->middleware('auth');
 
 //USER AUTHENTICATION ROUTE
 Auth::routes();

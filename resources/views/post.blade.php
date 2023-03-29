@@ -45,110 +45,71 @@ use App\Models\Post;
 
 
                     <div class="pt-5">
-                        <h3 class="mb-5">6 Comments</h3>
-                        <ul class="comment-list">
-                            <li class="comment">
-                                <div class="vcard">
-                                    <img src="images/person_1.jpg" alt="Image placeholder">
-                                </div>
-                                <div class="comment-body">
-                                    <h3>Jean Doe</h3>
-                                    <div class="meta">January 9, 2018 at 2:21pm</div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                                        necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente
-                                        iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                    <p><a href="#" class="reply rounded">Reply</a></p>
-                                </div>
-                            </li>
+                        @forelse ($post->comments as $comment)
+                        <h3 class="mb-5">{{ $comment->count() + @foreach ($comment->reply as $rep) {{ $rep->count() }} @endforeach }}
+                             Comments</h3>
+                            <ul class="comment-list">
+                                <li class="comment">
+                                    <div class="vcard">
+                                        <img src="{{ asset('public/storage/user/' . $comment->user->image) }}"
+                                            alt="{{ $comment->user->name }}">
+                                    </div>
+                                    <div class="comment-body">
+                                        @if ($comment->user)
+                                            <h3>{{ $comment->user->name }}</h3>
+                                        @endif
+                                        <div class="meta">{{ $comment->created_at->diffForHumans() }}</div>
+                                        <p>{!! $comment->comment_body !!}</p>
+                                        <p><a href="javascript::void(0)" class="reply rounded" onclick="reply(this)"
+                                                data-commentid="{{ $comment->id }}">Reply</a></p>
 
-                            <li class="comment">
-                                <div class="vcard">
-                                    <img src="images/person_1.jpg" alt="Image placeholder">
-                                </div>
-                                <div class="comment-body">
-                                    <h3>Jean Doe</h3>
-                                    <div class="meta">January 9, 2018 at 2:21pm</div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                                        necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente
-                                        iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                    <p><a href="#" class="reply rounded">Reply</a></p>
-                                </div>
-
-                                <ul class="children">
-                                    <li class="comment">
-                                        <div class="vcard">
-                                            <img src="images/person_1.jpg" alt="Image placeholder">
-                                        </div>
-                                        <div class="comment-body">
-                                            <h3>Jean Doe</h3>
-                                            <div class="meta">January 9, 2018 at 2:21pm</div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
-                                                laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe
-                                                enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?
-                                            </p>
-                                            <p><a href="#" class="reply rounded">Reply</a></p>
-                                        </div>
-
-
-                                        <ul class="children">
-                                            <li class="comment">
+                                        <!--reply body area-->
+                                        @foreach ($comment->reply as $rep)
+                                            <div style="margin-left:5%">
                                                 <div class="vcard">
-                                                    <img src="images/person_1.jpg" alt="Image placeholder">
+                                                    <img src="{{ asset('public/storage/user/' . $rep->user->image) }}"
+                                                        alt="Image placeholder">
                                                 </div>
-                                                <div class="comment-body">
-                                                    <h3>Jean Doe</h3>
-                                                    <div class="meta">January 9, 2018 at 2:21pm</div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur
-                                                        quidem laborum necessitatibus, ipsam impedit vitae autem, eum
-                                                        officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum
-                                                        impedit necessitatibus, nihil?</p>
-                                                    <p><a href="#" class="reply rounded">Reply</a></p>
-                                                </div>
+                                                @if ($rep->user)
+                                                    <h3>{{ $rep->user->name }}</h3>
+                                                @endif
+                                                <div class="meta">{{ $rep->created_at->diffForHumans() }}</div>
+                                                <p>{{ $rep->reply }}</p>
+                                                <p><a href="javascript::void(0)" class="reply rounded" onclick="reply(this)"
+                                                    data-commentid="{{ $rep->id }}">Reply</a></p>
+                                            </div>
+                                        @endforeach
+                                        <!--/.reply body area-->
 
-                                                <ul class="children">
-                                                    <li class="comment">
-                                                        <div class="vcard">
-                                                            <img src="images/person_1.jpg" alt="Image placeholder">
-                                                        </div>
-                                                        <div class="comment-body">
-                                                            <h3>Jean Doe</h3>
-                                                            <div class="meta">January 9, 2018 at 2:21pm</div>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                                Pariatur quidem laborum necessitatibus, ipsam impedit vitae
-                                                                autem, eum officia, fugiat saepe enim sapiente iste iure!
-                                                                Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                                            <p><a href="#" class="reply rounded">Reply</a></p>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
+                                    </div>
+                                </li>
+                            </ul>
 
-                            <li class="comment">
-                                <div class="vcard">
-                                    <img src="images/person_1.jpg" alt="Image placeholder">
-                                </div>
-                                <div class="comment-body">
-                                    <h3>Jean Doe</h3>
-                                    <div class="meta">January 9, 2018 at 2:21pm</div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                                        necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente
-                                        iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                    <p><a href="#" class="reply rounded">Reply</a></p>
-                                </div>
-                            </li>
-                        </ul>
+                        @empty
+
+                        @endforelse
+                        <!--reply-area-->
+                        <div class="reply-area" id="reply-area"  style="display:none">
+                            <form action="{{ route('reply.store') }}" method="post">
+                                @csrf
+                                <input type="text" id="commentId" name="commentId" hidden>
+                                <textarea name="reply_body" id="reply" cols="50" rows="3"></textarea>
+                                <br>
+                                <input type="submit" class="btn btn-primary" value="Reply">
+                                <a href="#reply-area" class="btn btn-danger" onclick="reply_close(this)">close</a>
+                            </form>
+                        </div>
+                        <!--/.reply-area-->
                         <!-- END comment-list -->
 
                         <div class="comment-form-wrap pt-5">
                             <h3 class="mb-5">Leave a comment</h3>
-                            <form action="#" class="p-5 bg-light">
+                            <form action="{{ route('comment.store') }}" method="post" class="p-5 bg-light">
+                                @csrf
+                                <input type="hidden" name="post_slug" value="{{ $post->slug }}">
                                 <div class="form-group">
                                     <label for="message">Message</label>
-                                    <textarea name="" id="message" cols="20" rows="5" class="form-control"></textarea>
+                                    <textarea name="comment_body" id="message" cols="20" rows="5" class="form-control"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="Post Comment" class="btn btn-primary">
@@ -316,4 +277,25 @@ use App\Models\Post;
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script type="text/javascript">
+        function reply(caller) {
+            document.querySelector('#commentId').value = $(caller).attr('data-commentid');
+            $('.reply-area').insertAfter($(caller));
+            $('.reply-area').show();
+        }
+
+        function reply_close(caller) {
+            $('.reply-area').hide();
+        }
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function(e) {
+            localStorage.setItem('scrollpos', window.scrollY);
+        };
+    </script>
 @endsection
