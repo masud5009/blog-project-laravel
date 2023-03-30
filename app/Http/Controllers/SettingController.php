@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('edditor');
+    }
     public function index()
     {
         $setting = Setting::find(1);

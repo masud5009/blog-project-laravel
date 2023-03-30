@@ -10,6 +10,7 @@ use App\Http\Controllers\{
     FrontendController,
     HomeController,
     ReplyController,
+    UserController,
 };
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,7 +36,7 @@ Route::get('/profile', [HomeController::class, 'index'])->name('home')->middlewa
 Route::prefix('admin/')->middleware('isAdmin')->group(function () {
     Route::get('/', [AdminController::class, 'redirect_admin']);
     Route::get('dashboard', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('users', [AdminController::class, 'users'])->name('users');
+    Route::get('users', [UserController::class, 'users'])->name('users');
     Route::get('profile/{user}', [AdminController::class, 'profile'])->name('admin.profile');
     Route::post('profile/update/{user}',[AdminController::class,'update'])->name('admin.update');
     Route::get('setting',[SettingController::class,'index'])->name('setting.index');

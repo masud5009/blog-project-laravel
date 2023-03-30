@@ -10,6 +10,10 @@ use Session;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('edditor');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,8 +21,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::orderBy('created_at','DESC')->get();
+        if(Auth::user()->role == 1){
+            $category = Category::orderBy('created_at','DESC')->get();
         return view('admin.category.index')->with(compact('category'));
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**

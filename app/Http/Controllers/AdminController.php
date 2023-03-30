@@ -49,9 +49,4 @@ class AdminController extends Controller
         session()->flash('success','profile created successfully');
         return redirect()->back();
     }
-    public function users()
-    {
-        $users = User::orderBy('created_at','DESC')->get();
-        return view('admin.users.index')->with(compact('users'));
-    }
 }

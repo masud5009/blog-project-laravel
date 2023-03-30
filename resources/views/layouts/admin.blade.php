@@ -210,7 +210,7 @@
                             </a>
                         </li>
                         <!--category-->
-                        @if (auth()->user()->role = 1)
+                        @if (Auth::user()->role  == 1)
                         <li class="nav-item">
                             <a href="{{ route('category.index') }}" class="nav-link">
                                 <i class="nav-icon fa-solid fa-tags"></i>
@@ -242,6 +242,7 @@
                         </li>
                         <!--/.post-->
                         <!--users-->
+                        @if (Auth::user()->role == 1)
                         <li class="nav-item">
                             <a href="{{ route('users') }}" class="nav-link">
 
@@ -251,8 +252,10 @@
                                 </p>
                             </a>
                         </li>
+                        @endif
                         <!--/.users-->
                         <!--settings-->
+                        @if (Auth::user()->role == 1)
                         <li class="nav-item">
                             <a href="{{ route('setting.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-cog"></i>
@@ -261,6 +264,7 @@
                                 </p>
                             </a>
                         </li>
+                        @endif
                         <!--/.settings-->
                         <!--logout-->
                         <li class="nav-item">
