@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
 
-class PostMail extends Mailable
+class PostMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
     public $post;
