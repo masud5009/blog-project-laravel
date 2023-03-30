@@ -13,7 +13,7 @@
 
                                 <div class="text">
                                     <h2>{{ $post->title }}</h2>
-                                    <span class="date">{{ $post->created_at->format('M d, Y') }}</span>
+                                    <span class="date">{{ $post->created_at->diffForHumans() }}</span>
                                 </div>
                             </a>
                         @endforeach
@@ -29,7 +29,7 @@
                                         <span class="post-category bg-danger">{{ $post->category->name }}</span>
                                     </div>
                                     <h2>{{ $post->title }}</h2>
-                                    <span class="date">{{ $post->created_at->format('M d, Y') }}</span>
+                                    <span class="date">{{ $post->created_at->diffForHumans() }}</span>
                                 </div>
                             </a>
                         @endforeach
@@ -42,7 +42,7 @@
 
                                 <div class="text">
                                     <h2>{{ $post->title }}</h2>
-                                    <span class="date">{{ $post->created_at->format('M d, Y') }}</span>
+                                    <span class="date">{{ $post->created_at->diffForHumans() }}</span>
                                 </div>
                             </a>
                         @endforeach
@@ -57,14 +57,15 @@
                 <div class="row">
                     @foreach ($recentPosts as $post)
                         <div class="col-lg-4 mb-5">
-                            <p class="blog-post-meta">{{ $post->created_at->format('M d, Y') }} by
-                                <a href="#">{{ $post->user->name }}</a></p>
+
                             <a href="{{ route('view.post', $post->slug) }}"><img class="img-fluid mb-3"
-                                    src="{{ asset('public/storage/post/' . $post->image) }}" alt=""></a>
+                                    src="{{ asset('public/storage/post/' . $post->image) }}" alt="{{ $post->title }}"></a>
                             <span class="post-category text-white bg-danger mb-3">{{ $post->category->name }}</span>
+                            <p style="font-weight:bold" class="blog-post-meta">{{ $post->created_at->diffForHumans() }} by
+                                <a href="#">{{ $post->user->name }}</a></p>
                             <a href="{{ route('view.post',$post->slug)}}">
-                                <h2 class="blog-post-title">{{ $post->title }}</h2></a>
-                            <p>{!! Str::limit($post->description, 300) !!}</p>
+                                <h3 class="blog-post-title">{{ $post->title }}</h3></a>
+                            {{-- <p>{!! Str::limit($post->description, 300) !!}</p> --}}
                         </div>
                     @endforeach
                 </div>
@@ -88,7 +89,7 @@
                                 <span class="post-category text-white bg-danger">{{ $post->category->name }}</span>
                                 <div class="text">
                                     <h2>{{ $post->title }}</h2>
-                                    <span>{{ $post->created_at->format('M d, Y') }}</span>
+                                    <span>{{ $post->created_at->diffForHumans() }}</span>
                                 </div>
                             </a>
                         </div>
@@ -100,7 +101,7 @@
                                 <span class="post-category text-white bg-success">{{ $post->category->name }}</span>
                                 <div class="text text-sm">
                                     <h2>{{ $post->title }}</h2>
-                                    <span>{{ $post->created_at->format('M d, Y') }}</span>
+                                    <span>{{ $post->created_at->diffForHumans() }}</span>
                                 </div>
                             </a>
                         @endforeach
@@ -112,7 +113,7 @@
                                     <span class="post-category text-white bg-primary">{{ $post->category->name }}</span>
                                     <div class="text text-sm">
                                         <h2>{{ $post->title }}</h2>
-                                        <span>{{ $post->created_at->format('M d, Y') }}</span>
+                                        <span>{{ $post->created_at->diffForHumans() }}</span>
                                     </div>
                                 </a>
                             @endforeach

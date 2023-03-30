@@ -4,7 +4,9 @@
             <div class="col-lg-4">
                 <h1 class="text-white">About us</h1>
                 <div class="text">
+                    @if($setting)
                     {{ $setting->about }}
+                    @endif
                 </div>
             </div>
             <div class="col-lg-4">
@@ -17,11 +19,11 @@
             <div class="col-lg-4">
                 <h3 class="footer-heading mb-4 text-white">Connect With Us</h3>
                 <p>
-                    <a href="{{ $setting->facebook }}"><span class="icon-facebook pt-2 pr-2 pb-2 pl-0"></span></a>
-                    <a href="{{ $setting->twitter }}"><span class="icon-twitter p-2"></span></a>
-                    <a href="{{ $setting->instagram }}"><span class="icon-instagram p-2"></span></a>
-                    <a href="{{ $setting->reddit }}"><span class="icon-reddit p-2"></span></a>
-                    <a href="{{ $setting->email }}"><span class="icon-envelope p-2"></span></a>
+                    <a href="@if($setting) {{ $setting->facebook }} @endif"><span class="icon-facebook pt-2 pr-2 pb-2 pl-0"></span></a>
+                    <a href="@if($setting) {{ $setting->twitter }} @endif"><span class="icon-twitter p-2"></span></a>
+                    <a href="@if($setting) {{ $setting->instagram }} @endif"><span class="icon-instagram p-2"></span></a>
+                    <a href="@if($setting) {{ $setting->reddit }} @endif"><span class="icon-reddit p-2"></span></a>
+                    <a href="@if($setting) {{ $setting->email }} @endif"><span class="icon-envelope p-2"></span></a>
                 </p>
             </div>
         </div>

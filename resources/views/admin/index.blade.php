@@ -57,7 +57,7 @@
                     <div class="small-box bg-warning">
                         <div class="inner">
                             <h3>
-                                {{-- {{ $count }} --}}
+                                {{ auth()->user()->count() }}
                             </h3>
 
                             <p>User Registrations</p>

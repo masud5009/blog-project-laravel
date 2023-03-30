@@ -16,8 +16,8 @@ use App\Models\Post;
                             <figure class="author-figure mb-0 mr-3 d-inline-block"><img
                                     src="{{ asset('public/storage/user/' . $post->user->image) }}" alt="Image"
                                     class="img-fluid"></figure>
-                            <span class="d-inline-block mt-1">{{ $post->user->name }}</span>
-                            <span>{{ $post->created_at->format('M d, Y') }}</span>
+                            <span class="d-inline-block mt-1">{{ $post->user->name }}</span> --
+                            <span>{{ $post->created_at->diffForHumans() }}</span>
                         </div>
                     </div>
                 </div>
@@ -37,10 +37,12 @@ use App\Models\Post;
                     </div>
 
                     <div class="pt-5">
-                        <p>Categories: <a href="#">{{ $post->category->name }}</a>,
-                            Tags: @foreach ($post->tag as $tag)
-                                <a href="#">{{ $tag->name }}</a>,</p>
-                        @endforeach
+                        <p>Categories : <a href="{{ route('view.category', $post->category->slug) }}">{{ $post->category->name }}</a>,
+                            Tags : @foreach ($post->tag as $tag)
+                                <a href="#">{{ $tag->name }}</a>,
+                                @endforeach
+                        </p>
+
                     </div>
 
 
@@ -140,7 +142,6 @@ use App\Models\Post;
                             <div class="bio-body">
                                 <h2>{{ $post->user->name }}</h2>
                                 <p class="mb-4">{{ $post->user->description }}</p>
-                                <p><a href="#" class="btn btn-primary btn-sm rounded px-4 py-2">Read my bio</a></p>
                                 <p class="social">
                                     <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
                                     <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
@@ -163,7 +164,7 @@ use App\Models\Post;
                                             <div class="text">
                                                 <h4>{{ $post->title }}</h4>
                                                 <div class="post-meta">
-                                                    <span class="mr-2">{{ $post->created_at->format('M d, Y') }}</span>
+                                                    <span class="mr-2">{{ $post->created_at->diffForHumans() }}</span>
                                                 </div>
                                             </div>
                                         </a>
@@ -221,7 +222,7 @@ use App\Models\Post;
                             <span class="post-category text-white bg-danger">{{ $post->category->name }}</span>
                             <div class="text">
                                 <h2>{{ $post->title }}</h2>
-                                <span>{{ $post->created_at->format('M Y, d') }}</span>
+                                <span>{{ $post->created_at->diffForHumans() }}</span>
                             </div>
                         </a>
                     @endforeach
@@ -234,7 +235,7 @@ use App\Models\Post;
                             <span class="post-category text-white bg-success">{{ $post->category->name }}</span>
                             <div class="text text-sm">
                                 <h2>{{ $post->title }}</h2>
-                                <span>{{ $post->created_at->format('M Y, d') }}</span>
+                                <span>{{ $post->created_at->diffForHumans() }}</span>
                             </div>
                         </a>
                     @endforeach
@@ -246,7 +247,7 @@ use App\Models\Post;
                                 <span class="post-category text-white bg-primary">{{ $post->category->name }}</span>
                                 <div class="text text-sm">
                                     <h2>{{ $post->title }}</h2>
-                                    <span>{{ $post->created_at->format('M Y, d') }}</span>
+                                    <span>{{ $post->created_at->diffForHumans() }}</span>
                                 </div>
                             </a>
                         @endforeach
