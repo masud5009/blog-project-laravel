@@ -30,6 +30,7 @@
                             </div>
                         </div>
                         <!-- /.card-header -->
+                        @if (Auth::user()->role == 1)
                         <div class="card-body p-0">
                             <table class="table table-striped">
                                 <thead>
@@ -90,6 +91,70 @@
                                 </tbody>
                             </table>
                         </div>
+                        @elseif (Auth::user()->role == 2)
+                            @foreach ($posts as $post)
+                            <div class="card-body p-0">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10px">#</th>
+                                            <th>Image</th>
+                                            <th>Title</th>
+                                            <th>Category</th>
+                                            {{-- <th>Tags</th> --}}
+                                            <th>Author</th>
+                                            <th style="width: 40px">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if ($posts->count())
+                                            @php
+                                                $count = 1;
+                                            @endphp
+                                            @foreach ($posts as $post)
+                                                <tr>
+                                                    <td>{{ $count++ }}</td>
+                                                    <td>
+                                                        <div style="max-width: 70px;max-height:70px;overflow:hidden">
+                                                            <img src="{{ asset('public/storage/post/' . $post->image) }}"
+                                                                class="img-fluid" alt="">
+                                                        </div>
+                                                    </td>
+                                                    <td>{{ $post->title }}</td>
+                                                    <td>{{ $post->category->name }}</td>
+                                                    {{-- <td>
+                                  @foreach ($post->tags as $tag)
+                                    <span class="badge badge-primary">{{ $tag->name }}</span>
+                                  @endforeach
+                                </td> --}}
+                                                    <td>{{ $post->user->name }}</td>
+                                                    <td class="d-flex">
+                                                        <a href="{{ route('post.show', [$post->id]) }}"
+                                                            class="btn btn-success mr-1 btn-sm"><i class="fas fa-eye"></i></a>
+                                                        <a href="{{ route('post.edit', [$post->id]) }}"
+                                                            class="btn btn-primary mr-1 btn-sm"><i class="fas fa-edit"></i></a>
+                                                        <form action="{{ route('post.destroy', [$post->id]) }}" method="post">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button class="btn btn-danger mr-1 btn-sm" type="submit"><i
+                                                                    class="fas fa-trash"></i></button>
+                                                        </form>
+
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td colspan="7">
+                                                    <h5 class="text-center">No tags found</h5>
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
+                            @endforeach
+                        @endif
                         <!-- /.card-body -->
                     </div>
                 </div>

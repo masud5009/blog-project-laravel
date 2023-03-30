@@ -7,6 +7,7 @@ use App\Http\Controllers\{
     TagController,
     CategoryController,
     CommentController,
+    EdditorController,
     FrontendController,
     HomeController,
     ReplyController,
@@ -44,6 +45,7 @@ Route::prefix('admin/')->middleware('isAdmin')->group(function () {
     Route::resource('category', CategoryController::class);
     Route::resource('tag', TagController::class);
     Route::resource('post', PostController::class);
+    Route::get('admin/post/{id}',[EdditorController::class,'index'])->name('user.post');
 });
 
 

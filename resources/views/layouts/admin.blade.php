@@ -232,6 +232,7 @@
                         </li>
                         <!--/.tag-->
                         <!--post-->
+                        @if(Auth::user()->role == 1)
                         <li class="nav-item">
                             <a href="{{ route('post.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
@@ -240,6 +241,16 @@
                                 </p>
                             </a>
                         </li>
+                        @elseif(Auth::user()->role == 2)
+                        <li class="nav-item">
+                            <a href="{{ route('user.post',[Auth::user()->id]) }}" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Post
+                                </p>
+                            </a>
+                        </li>
+                        @endif
                         <!--/.post-->
                         <!--users-->
                         @if (Auth::user()->role == 1)
