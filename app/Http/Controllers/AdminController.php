@@ -46,7 +46,7 @@ class AdminController extends Controller
             $user->image = $filname;
         }
         $user->save();
-        session()->flash('success','Post created successfully');
+        session()->flash('success','profile created successfully');
         return redirect()->back();
     }
     public function users()

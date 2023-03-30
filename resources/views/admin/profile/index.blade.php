@@ -48,7 +48,7 @@
                                                     <label for="email" class="col-sm-2 col-form-label">Email</label>
                                                     <div class="col-sm-10">
                                                         <input type="email" class="form-control" name="email"
-                                                            value="{{ $user->email }}">
+                                                            value="{{ $user->email }}" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -64,7 +64,7 @@
                                                     <label for="about" class="col-sm-2 col-form-label">About your
                                                         self</label>
                                                     <div class="col-sm-10">
-                                                        <textarea name="description" rows="3" class="form-control">{{ $user->description }}</textarea>
+                                                        <textarea name="description" rows="3" class="form-control" placeholder="About your self....">{{ $user->description }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>

@@ -37,7 +37,7 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="name">Site name</label>
-                                                <input type="text" name="name" class="form-control" value="">
+                                                <input type="text" name="name" class="form-control" value="@if($setting) {{ $setting->sitename }} @endif">
                                             </div>
                                             <!--image-->
                                             <div class="form-group">
@@ -65,7 +65,7 @@
                                                     <div class="form-group">
                                                         <label for="twitter">Twitter</label>
                                                         <input type="url" name="twitter" class="form-control"
-                                                            placeholder="Twitter url" value="">
+                                                            placeholder="Twitter url" value="@if($setting) {{ $setting->twitter }} @endif">
                                                     </div>
                                                 </div>
 
@@ -73,7 +73,7 @@
                                                     <div class="form-group">
                                                         <label for="facebook">Facebook</label>
                                                         <input type="url" name="facebook" class="form-control"
-                                                            placeholder="Facebook url" value="">
+                                                            placeholder="Facebook url" value="@if($setting) {{ $setting->facebook }} @endif">
                                                     </div>
                                                 </div>
 
@@ -81,7 +81,7 @@
                                                     <div class="form-group">
                                                         <label for="instagram">Instagram</label>
                                                         <input type="url" name="instagram" class="form-control"
-                                                            placeholder="Instagram url" value="">
+                                                            placeholder="Instagram url" value="@if($setting) {{ $setting->instagram }} @endif">
                                                     </div>
                                                 </div>
 
@@ -89,21 +89,21 @@
                                                     <div class="form-group">
                                                         <label for="email">Email</label>
                                                         <input type="email" name="email" class="form-control"
-                                                            placeholder="Your email" value="">
+                                                            placeholder="Your email" value="@if($setting) {{ $setting->email }} @endif">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label for="address">Address</label>
                                                         <input type="text" name="address" class="form-control"
-                                                            placeholder="Your address" value="">
+                                                            placeholder="Your address" value="@if($setting) {{ $setting->address }} @endif">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label for="phone">Phone</label>
                                                         <input type="text" name="phone" class="form-control"
-                                                            placeholder="Your conact number" value="">
+                                                            placeholder="Your conact number" value="@if($setting) {{ $setting->phone }} @endif">
                                                     </div>
                                                 </div>
 
@@ -111,7 +111,7 @@
                                                     <div class="form-group">
                                                         <label for="copyright">Copyright</label>
                                                         <input type="text" name="copyright" class="form-control"
-                                                            value="">
+                                                            value="@if($setting) {{ $setting->copyright }} @endif">
                                                     </div>
                                                 </div>
 
@@ -119,12 +119,12 @@
                                                     <div class="form-group">
                                                         <label for="reddit">Reddit</label>
                                                         <input type="url" name="reddit" class="form-control"
-                                                            placeholder="Reddit url" value="">
+                                                            placeholder="Reddit url" value="@if($setting) {{ $setting->reddit }} @endif">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>About</label>
-                                                    <textarea class="form-control" name="about" rows="3" placeholder="Enter description" style="height: 73px;"></textarea>
+                                                    <textarea class="form-control" name="about" rows="3" placeholder="Enter description" style="height: 73px;">@if($setting) {{ $setting->about  }} @endif</textarea>
                                                 </div>
                                             </div>
                                         </div>

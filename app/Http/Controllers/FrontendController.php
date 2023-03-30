@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Setting;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,9 +28,9 @@ class FrontendController extends Controller
         $recentPosts = Post::orderBy('created_at', 'DESC')->paginate(9);
         //USER
         $user = auth()->User();
-
+        $setting = Setting::find(1);
         $category = Category::all();
-        $data = compact('category', 'header_posts', 'first_header', 'second_header', 'last_header', 'recentPosts', 'footer_post', 'first_footer', 'second_footer', 'last_footer');
+        $data = compact('setting','category', 'header_posts', 'first_header', 'second_header', 'last_header', 'recentPosts', 'footer_post', 'first_footer', 'second_footer', 'last_footer');
         return view('welcome')->with($data);
     }
     public function post($slug)

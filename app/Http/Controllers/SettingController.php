@@ -9,7 +9,8 @@ class SettingController extends Controller
 {
     public function index()
     {
-        return view('admin.setting.edit');
+        $setting = Setting::find(1);
+        return view('admin.setting.edit')->with(compact('setting'));
     }
     public function update(Request $request)
     {
@@ -34,7 +35,7 @@ class SettingController extends Controller
                 $setting->image = $filname;
             }
             $setting->update();
-            session()->flash('success', 'added successful');
+            session()->flash('success', 'Update successful');
             return redirect()->back();
         } else {
             $setting = new Setting();
@@ -56,7 +57,7 @@ class SettingController extends Controller
                 $setting->image = $filname;
             }
             $setting->save();
-            session()->flash('success', 'added successful');
+            session()->flash('success', 'Added successful');
             return redirect()->back();
         }
     }

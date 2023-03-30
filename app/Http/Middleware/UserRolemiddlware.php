@@ -19,12 +19,13 @@ class UserRolemiddlware
         if(Auth::check()){
             if(Auth::user()->role == 1){
                 return $next($request);
+            }elseif(Auth::user()->role == 2){
+                return $next($request);
             }else{
                 return redirect('/profile');
             }
         }else{
             return redirect('/login');
         }
-
     }
 }

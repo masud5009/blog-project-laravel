@@ -210,6 +210,7 @@
                             </a>
                         </li>
                         <!--category-->
+                        @if (auth()->user()->role = 1)
                         <li class="nav-item">
                             <a href="{{ route('category.index') }}" class="nav-link">
                                 <i class="nav-icon fa-solid fa-tags"></i>
@@ -218,6 +219,7 @@
                                 </p>
                             </a>
                         </li>
+                        @endif
                         <!--/.category-->
                         <!--tag-->
                         <li class="nav-item">
@@ -308,17 +310,11 @@
     <script src="{{ asset('admin') }}/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="{{ asset('admin') }}/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    {{-- <script>
-        $.widget.bridge('uibutton', $.ui.button)
-    </script> --}}
     <!-- Bootstrap 4 -->
     <script src="{{ asset('public/admin') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="{{ asset('public/admin') }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js">
     </script>
-    <!-- Summernote -->
-    {{-- <script src="{{ asset('public/admin')}}/plugins/summernote/summernote-bs4.min.js"></script> --}}
     <!-- overlayScrollbars -->
     <script src="{{ asset('public/admin') }}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->

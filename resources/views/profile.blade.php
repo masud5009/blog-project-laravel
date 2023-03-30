@@ -1,7 +1,9 @@
-@extends('layouts.app')
-
+@extends('layouts.account')
 @section('content')
     <div class="container">
+        <div class="register-logo">
+            <a href="{{ route('index') }}" class="text-black h2 mb-0">M <span class="text-danger">-Educate</span></a>
+        </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -14,7 +16,7 @@
                             </div>
                         @endif
 
-                        {{ __('You are logged in!') }}
+                        {{ __('Wait a few minutes to active your account from admin') }}
                     </div>
                 </div>
             </div>

@@ -21,9 +21,7 @@
 </head>
 
 <body>
-
     <div class="site-wrap">
-
         <div class="site-mobile-menu">
             <div class="site-mobile-menu-header">
                 <div class="site-mobile-menu-close mt-3">
@@ -32,7 +30,6 @@
             </div>
             <div class="site-mobile-menu-body"></div>
         </div>
-
         <header class="site-navbar" role="banner">
             <div class="container-fluid">
                 <div class="row align-items-center">
@@ -79,47 +76,13 @@
                 </div>
             </div>
         </header>
-
+        <!--start:content-->
         @yield('content')
-
+        <!--end:content-->
         <!--start:Footer-->
-        <footer>
-            <div class="container">
-                <div class="d-flex justify-content-between align-items-center footer-mobail">
-                    <div class="col-lg-4">
-                        <h1 class="text-white">About us</h1>
-                        <div class="text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat reprehenderit magnam
-                            deleniti
-                            quasi saepe, consequatur atque sequi delectus dolore veritatis obcaecati quae, repellat
-                            eveniet
-                            omnis, voluptatem in. Soluta, eligendi, architecto
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <ul class="navbar-nav d-flex">
-                            @foreach ($category as $cat)
-                            <li class="nav-item"><a class="nav-link" href="{{ route('view.category', $cat->slug) }}">{{ $cat->name }}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    <div class="col-lg-4">
-                        <h3 class="footer-heading mb-4 text-white">Connect With Us</h3>
-                        <p>
-                            <a href="#"><span class="icon-facebook pt-2 pr-2 pb-2 pl-0"></span></a>
-                            <a href="#"><span class="icon-twitter p-2"></span></a>
-                            <a href="#"><span class="icon-instagram p-2"></span></a>
-                            <a href="#"><span class="icon-rss p-2"></span></a>
-                            <a href="#"><span class="icon-envelope p-2"></span></a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        @include('footer')
         <!--end:Footer-->
-
     </div>
-
     <script src="{{ asset('public/website') }}/js/jquery-3.3.1.min.js"></script>
     <script src="{{ asset('public/website') }}/js/jquery-migrate-3.0.1.min.js"></script>
     <script src="{{ asset('public/website') }}/js/jquery-ui.js"></script>
