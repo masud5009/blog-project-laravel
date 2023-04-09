@@ -7,6 +7,7 @@ use App\Http\Controllers\{
     TagController,
     CategoryController,
     CommentController,
+    ContactController,
     EdditorController,
     FrontendController,
     HomeController,
@@ -24,6 +25,7 @@ use Illuminate\Http\Request;
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/post/{slug}', [FrontendController::class, 'post'])->name('view.post');
 Route::get('/category/{slug}', [FrontendController::class, 'category'])->name('view.category');
+Route::resource('contact',ContactController::class);
 //comment & reply route here
 Route::post('/comments', [CommentController::class, 'store'])->name('comment.store')->middleware('auth');
 Route::post('/reply', [ReplyController::class, 'store'])->name('reply.store')->middleware('auth');

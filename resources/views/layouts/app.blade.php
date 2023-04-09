@@ -50,9 +50,13 @@
                         <nav class="site-navigation" role="navigation">
                             <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
                                 @foreach ($category as $cat)
-                                    <li><a href="{{ route('view.category', $cat->slug) }}">{{ $cat->name }}</a>
+                                    <li>
+                                        <a href="{{ route('view.category', $cat->slug) }}">{{ $cat->name }}</a>
                                     </li>
                                 @endforeach
+                                <li>
+                                    <a href="{{ route('contact.index') }}">Contact us</a>
+                                </li>
                                 @guest
                                     @if (Route::has('register') && Route::has('login'))
                                         <li><a class="nav-link"
@@ -97,6 +101,7 @@
 
     <script src="{{ asset('public/website') }}/js/main.js"></script>
     @yield('script')
+    @yield('contact')
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async="" src="../../gtag/js.js?id=UA-23581568-13"></script>
     <script>

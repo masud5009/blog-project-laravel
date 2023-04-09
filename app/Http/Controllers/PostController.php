@@ -60,14 +60,6 @@ class PostController extends Controller
             'user_id' => auth()->user()->id,
             'published_at' => Carbon::now(),
         ]);
-        // $post = new Post();
-        // $post->title = $request->title;
-        // $post->slug = Str::slug($request->title, '_');
-        // $post->description = $request->description;
-        // $post->category_id = $request->category;
-        // $post->user_id = auth()->user()->id;
-        // $post->published_at = Carbon::now();
-
         $post->tag()->attach($request->tags);
 
         if ($request->hasFile('image')) {
