@@ -52,8 +52,12 @@ use App\Models\Post;
                             <ul class="comment-list">
                                 <li class="comment">
                                     <div class="vcard">
+                                        @if(auth()->user()->image)
                                         <img src="{{ asset('public/storage/user/' . $comment->user->image) }}"
                                             alt="{{ $comment->user->name }}">
+                                        @else
+                                            <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/original/profile-icon-design-free-vector.jpg" alt="{{ $comment->user->name }}>
+                                        @endif
                                     </div>
                                     <div class="comment-body">
                                         @if ($comment->user)
